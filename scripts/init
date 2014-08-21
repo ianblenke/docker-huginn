@@ -119,8 +119,10 @@ EOF
 fi
 
 # Assuming we have a created database, run the migrations and seed it idempotently.
-sudo -u huginn -EH bundle exec rake db:migrate
+[ -n "$DO_NOT_MIGRATE" ] && sudo -u huginn -EH bundle exec rake db:migrate
 [ -n "$DO_NOT_SEED"] && sudo -u huginn -EH bundle exec rake db:seed
+
+[ -n "$INTENTIONALLY_SLEEP" ] || sleep $INTENTIONALLY_SLEEP
 
 # Start huginn
 sudo -u huginn -EH bundle exec foreman start

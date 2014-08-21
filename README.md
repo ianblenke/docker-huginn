@@ -49,9 +49,19 @@ Simple stand-alone usage:
 
     docker run -it -p 5000:5000 ianblenke/huginn
 
-To link to another container named 'mysql':
+To link to another mysql container, for example:
 
-    docker run --rm --name huginn --link MYSQL:mysql -p 5000:5000 -e "DATABASE_USER=huginn" -e "DATABASE_PASSWORD=pass@word" ianblenke/huginn
+    docker run --rm --name newcentury_mysql -p 3306 \
+        -e MYSQL_DATABASE=huginn \
+        -e MYSQL_USER=huginn \
+        -e MYSQL_PASSWORD=somethingsecret \
+        -e MYSQL_ROOT_PASSWORD=somethingevenmoresecret \
+        ianblenke/huginn
+    docker run --rm --name huginn --link newcentury_mysql:MYSQL -p 5000:5000 \
+        -e DATABASE_NAME=huginn \
+        -e DATABASE_USER=huginn \
+        -e DATABASE_PASSWORD=somethingsecret \
+        ianblenke/huginn
 
 To link to another container named 'postgres':
 
