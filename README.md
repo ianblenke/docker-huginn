@@ -1,9 +1,9 @@
 Huginn for docker with multiple container linkage
 =================================================
 
-This image runs a linkable [Huginn][https://github.com/cantino/huginn] instance.
+This image runs a linkable [Huginn](https://github.com/cantino/huginn) instance.
 
-This project was roughly based on the [sameersbn/gitlab][https://registry.hub.docker.com/u/sameersbn/gitlab/] project.
+This project was roughly based on the [sameersbn/gitlab](https://registry.hub.docker.com/u/sameersbn/gitlab/) project.
 
 The scripts/init script generates a .env file containing the variables as passed as per normal Huginn documentation.
 The same environment variables that would be used for Heroku PaaS deployment are used by this script.
@@ -95,7 +95,7 @@ Other Huginn 12factored environment variables of note, as generated and put into
     ${USE_GRAPHVIZ_DOT:+USE_GRAPHVIZ_DOT=${USE_GRAPHVIZ_DOT:-dot}}
     TIMEZONE="${TIMEZONE:-Pacific Time (US & Canada)}"
 
-The defaults used are the Huginn defaults as per the [.env.example][https://github.com/cantino/huginn/blob/master/.env.example] file.
+The defaults used are the Huginn defaults as per the [.env.example](https://github.com/cantino/huginn/blob/master/.env.example) file.
 
 ## Building on your own
 
