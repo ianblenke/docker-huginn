@@ -3,6 +3,8 @@ Huginn for docker with multiple container linkage
 
 This image runs a linkable [Huginn](https://github.com/cantino/huginn) instance.
 
+There is an automated build repository on docker hub for [ianblenke/docker-huginn](https://registry.hub.docker.com/builds/github/ianblenke/docker-huginn/).
+
 This project was roughly based on the [sameersbn/gitlab](https://registry.hub.docker.com/u/sameersbn/gitlab/) project.
 
 The scripts/init script generates a .env file containing the variables as passed as per normal Huginn documentation.
