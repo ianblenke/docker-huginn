@@ -122,7 +122,7 @@ fi
 [ -z "${DO_NOT_MIGRATE}" ] && sudo -u huginn -EH bundle exec rake db:migrate
 [ -z "${DO_NOT_SEED}" ] && sudo -u huginn -EH bundle exec rake db:seed
 
-[ -z "$INTENTIONALLY_SLEEP" ] && sleep $INTENTIONALLY_SLEEP
+[ -n "$INTENTIONALLY_SLEEP" ] && sleep $INTENTIONALLY_SLEEP
 
 # Start huginn
 sudo -u huginn -EH bundle exec foreman start
