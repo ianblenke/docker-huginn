@@ -120,7 +120,7 @@ fi
 
 # Assuming we have a created database, run the migrations and seed it idempotently.
 [ -z "${DO_NOT_MIGRATE}" ] && sudo -u huginn -EH bundle exec rake db:migrate
-[ -z "${DO_NOT_SEED}"] && sudo -u huginn -EH bundle exec rake db:seed
+[ -z "${DO_NOT_SEED}" ] && sudo -u huginn -EH bundle exec rake db:seed
 
 [ -z "$INTENTIONALLY_SLEEP" ] && sleep $INTENTIONALLY_SLEEP
 
