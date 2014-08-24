@@ -18,7 +18,7 @@ fi
 
 cat <<EOF > /app/.env
 APP_SECRET_TOKEN=${APP_SECRET_TOKEN:-CHANGEME}
-DOMAIN=${DOMAIN:+${HUGINN_HOST:-localhost}:${PORT:-3000}}
+DOMAIN=${DOMAIN:+${HUGINN_HOST:-localhost}:${PORT:-5000}}
 ${ASSET_HOST:+ASSET_HOST=${ASSET_HOST}}
 DATABASE_ADAPTER=${DATABASE_ADAPTER:-mysql2}
 DATABASE_ENCODING=${DATABASE_ENCODING:-utf8}
@@ -123,6 +123,11 @@ fi
 [ -z "${DO_NOT_SEED}" ] && sudo -u huginn -EH bundle exec rake db:seed
 
 [ -n "$INTENTIONALLY_SLEEP" ] && sleep $INTENTIONALLY_SLEEP
+
+# Fixup the Procfile and prepare the PORT
+[ -z "${DO_NOT_RUN_JOBS}" ] && perl -pi -e 's/^jobs:/#jobs:/' /app/Procfile
+perl -pi -e 's/rails server$/rails server -p $PORT/' /app/Procfile
+export PORT
 
 # Start huginn
 sudo -u huginn -EH bundle exec foreman start
